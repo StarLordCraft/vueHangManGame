@@ -1,12 +1,16 @@
-<style>
-</style>
+<script>
+    export default{
+        name: "Letter",
+        props: [letter],
+    }
+</script>
 
 <template>
-    <button>
+    <button @click="">
         {{ letter }}
     </button>
 </template>
 
-<script>
-    
-</script>
+<style scoped>
+
+</style>
