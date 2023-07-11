@@ -1,17 +1,17 @@
 <script setup>
-  import {ref} from 'vue';
+  import {reactive} from 'vue';
   import PreJogo from './components/preJogo.vue'
-  let tela = 'inicio';
+  const state = reactive({tela: 'inicio'});
 </script>
 
 <template>
   <main id="app">
     <h1 id="title">Hangman Game</h1>
-    <section v-if="tela === 'inicio'" id="inicio">
-      <PreJogo />
+    <section v-if="state.tela === 'inicio'" id="inicio">
+      <PreJogo :state="state" />
     </section>
-    <section v-if="tela === 'game'" id="game">
-      Jogo
+    <section v-if="state.tela === 'game'" id="game">
+      
     </section>
   </main>
 </template>

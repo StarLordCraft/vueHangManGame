@@ -43,6 +43,8 @@ button{
 
     outline: none;
 
+    cursor: pointer;
+
     width: 10rem;
     aspect-ratio: 3 / 1;
 }

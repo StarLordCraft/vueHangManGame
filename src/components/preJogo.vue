@@ -1,18 +1,28 @@
 <script setup>
-    import {ref} from 'vue';
+    import {ref, defineProps} from 'vue';
     const palavra  =  ref('');
     const dica  =  ref('');
     const currentForm = ref('palavra');
+    const props = defineProps({
+        state:{
+            type: Object,
+            required: true,
+        }
+    })    
 
     function nextFormInput(evt){
         if(currentForm.value == 'palavra'){
             currentForm.value = 'dica'
             palavra.value = evt.target.previousElementSibling.value
+            evt.target.previousElementSibling.value = ''
         }
         else{
             dica.value = evt.target.previousElementSibling.value
-            console.log(palavra.value)
-            console.log(dica.value)
+            props.state.gameData = {
+                palavra: palavra,
+                dica: dica,
+            }
+            props.state.tela = 'game'
         }
     }
 </script>
@@ -35,7 +45,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        gap: 0.5rem;
+        gap: 1rem;
 
 
         text-align: center;
@@ -44,7 +54,7 @@
     }
     .form input{
         width: 100%;
-        height: 2rem;
+        height: 3rem;
         border-radius: 0.5rem;
     }
     button{
