@@ -29,13 +29,23 @@
     </form>
 </template>
 
-<style>
+<style scoped>
     .form{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 0.5rem;
+
+
         text-align: center;
+
+        margin: 2rem;
+    }
+    .form input{
+        width: 100%;
+        height: 2rem;
+        border-radius: 0.5rem;
     }
     button{
         display: block;

@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+html{
+    font-size: 62.5%;
+}
+
 :root{
     --color-background:#2b343e;  
     --color-background-button:#2980b9;
@@ -19,4 +23,26 @@ body{
     min-height: 100vh;
     background-color: var(--color-background);
     color: var(--color-text-light);
+}
+
+h1{
+    font-size: 4.4rem;
+}
+
+p,
+label{
+    font-size: 1.6rem;
+}
+
+button{
+    background-color: var(--color-background-button);
+    color: var(--color-text-light);
+
+    border: none;
+    border-radius: 5px;
+
+    outline: none;
+
+    width: 10rem;
+    aspect-ratio: 3 / 1;
 }

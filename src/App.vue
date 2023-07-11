@@ -29,4 +29,7 @@
     align-items: center;
     justify-content: center;
 }
+  #inicio{
+    width: 30rem;
+  }
 </style>
