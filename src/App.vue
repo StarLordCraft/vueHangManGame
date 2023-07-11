@@ -1,5 +1,6 @@
 <script setup>
   import {ref} from 'vue';
+  import PreJogo from './components/preJogo.vue'
   let tela = 'inicio';
 </script>
 
@@ -7,7 +8,7 @@
   <main id="app">
     <h1 id="title">Hangman Game</h1>
     <section v-if="tela === 'inicio'" id="inicio">
-      Início
+      <PreJogo />
     </section>
     <section v-if="tela === 'game'" id="game">
       Jogo
