@@ -1,8 +1,5 @@
 <script>
-    export default{
-        name: "Letter",
-        props: [letter],
-    }
+    
 </script>
 
 <template>
