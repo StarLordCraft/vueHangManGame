@@ -9,7 +9,7 @@
 <template>
     <section>
         <section>
-
+            
         </section>
         <section class="letters">
             <Letter v-for="letter in alphabet" :letter="letter" />
