@@ -12,7 +12,7 @@
       <PreJogo :state="state" />
     </section>
     <section v-if="state.tela === 'game'" id="game">
-      <Game />
+      <Game :gameData="state.gameData" />
     </section>
   </main>
 </template>
