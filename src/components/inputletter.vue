@@ -14,7 +14,8 @@
 
     const className = ref('');
 
-    function handleLetterClick(){
+    function handleLetterClick(evt){
+        evt.target.setAttribute('disabled', true);
         if(props.checkLetter(props.letter)){
             className.value = 'correct';
             return;
@@ -36,25 +37,32 @@
         
         border: 2px solid var(--color-text-light); 
         border-radius: 0;
-
+        
         width: 4rem;
         height: 4rem;
-
+        
         text-transform: uppercase;
+    }
+
+    button:hover{
+         border: 2px solid var(--color-background-button);
     }
 
     .correct{
         border: 2px solid var(--color-text-success);
 
         color: var(--color-text-success);
+        
+        pointer-events: none;
     }
 
     .fail{
         border: 2px solid var(--color-text-error);
-        color: var(--color-text-error)
+        
+        color: var(--color-text-error);
+        
+        pointer-events: none;
     }
+
     
-    button:hover{
-        border: 2px solid var(--color-background-button);
-    }
 </style>
