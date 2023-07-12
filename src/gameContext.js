@@ -2,6 +2,8 @@ export default class GameContext{
     constructor(gameState){
         this.gameState = gameState;
 
+        this.gameState.corrects = [];
+
         this.fails = 0;
         this.correct = 0;
 
@@ -14,9 +16,18 @@ export default class GameContext{
 
         corrects === 0 ? ++this.fails : this.correct += corrects;
         //Se acertar alguma letra ele mexe na controler, senão ai ele simplesmente soma um nos erros
-        console.log(corrects);
+
+        if(corrects > 0){
+            this.displayLetter(letter);
+        }
+
         return (corrects > 0);
     }
+
+    displayLetter = (letter) => {
+        this.gameState.corrects.push(letter);
+    }
+
     checkEndGame = (gameState) => {
         if(this.fails >= 6)gameState.result = false;
         if(this.correct >= this.controllerWin)gameState.result = true;

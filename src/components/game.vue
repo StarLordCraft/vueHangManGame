@@ -14,13 +14,12 @@
     
     import GameContext from '../gameContext.js';
     
-    
     const props = defineProps({
         gameData:{
             type: Object,
             required: true,
         }
-    })
+    });
     
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", 
     "l", "m", "n", "o", "p", "q", "r", "s",
@@ -29,7 +28,8 @@
     const Game = new GameContext(props.gameData);
     
     const fails = ref(fails0);
-    const GameState = reactive(Game.gameState);
+    const GameState = ref(Game.gameState.corrects);
+
 </script>
 
 <template>
@@ -40,7 +40,7 @@
             </div>
 
             <div class="word">
-                <Letter v-for="letter in props.gameData.palavra" :letter="letter" :correct="false" />
+                <Letter v-for="letter in props.gameData.palavra" :letter="letter" :correct="GameState.indexOf(letter) != -1" />
             </div>
 
         </section>

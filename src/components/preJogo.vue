@@ -14,13 +14,13 @@
         if(currentForm.value == 'palavra'){
             currentForm.value = 'dica'
             palavra.value = evt.target.previousElementSibling.value
-            evt.target.previousElementSibling.value = ''
+            evt.target.previousElementSibling.value = '';
         }
         else{
             dica.value = evt.target.previousElementSibling.value
             props.state.gameData = {
-                palavra: palavra,
-                dica: dica,
+                palavra: palavra.value.toLocaleLowerCase(),
+                dica: dica.value.toLocaleLowerCase(),
             }
             props.state.tela = 'game'
         }
