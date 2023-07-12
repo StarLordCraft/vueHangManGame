@@ -1,14 +1,31 @@
 <script setup>
+    import {ref} from 'vue';
+    
+    import fails0 from '../assets/fails0.svg'
+    import fails1 from '../assets/fails1.svg'
+    import fails2 from '../assets/fails2.svg'
+    import fails3 from '../assets/fails3.svg'
+    import fails4 from '../assets/fails4.svg'
+    import fails5 from '../assets/fails5.svg'
+    import fails6 from '../assets/fails6.svg'
+
     import Letter from './letter.vue';
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", 
     "l", "m", "n", "o", "p", "q", "r", "s",
      "t", "u", "v", "w", "x", "y", "z"];
-
+    const fails = ref(fails0);
 </script>
 
 <template>
     <section>
         <section>
+            <div>
+                <img :src="fails" alt="">
+            </div>
+
+            <div>
+
+            </div>
             
         </section>
         <section class="letters">
@@ -17,7 +34,7 @@
     </section>
 </template>
 
-<style>
+<style scoped>
     .letters{
         width: 32rem;
 
