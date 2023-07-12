@@ -4,7 +4,7 @@
     const props = defineProps({
         fails:{
             type: String,
-            required: true,
+            required: false,
         },
     })
     
@@ -23,5 +23,5 @@
     img{
         width: 100%;
     }
-    
+
 </style>

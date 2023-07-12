@@ -65,6 +65,7 @@
             <Inputletter v-for="letter in alphabet" 
             :letter="letter"  
             :checkLetter="Game.checkLetter"  
+            :key="letter"
             />
         </section>
 
