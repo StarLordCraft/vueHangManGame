@@ -12,6 +12,8 @@
         },
     })
 
+    window.addEventListener('keydown', handleKeyPressed)
+
     const className = ref('');
 
     function handleLetterClick(){
@@ -22,10 +24,18 @@
         
         className.value = 'fail';
     }
+
+    function handleKeyPressed(evt){
+        if(evt.key === props.letter){
+            handleLetterClick();
+            window.removeEventListener('keydown', handleKeyPressed);
+        }
+    }
+
 </script>
 
 <template>
-    <button @click="handleLetterClick" :class="className">
+    <button @click.prevent="handleLetterClick" :class="className">
         {{ props.letter }}
     </button>
 </template>
