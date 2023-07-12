@@ -4,20 +4,17 @@
     import FailStatus from './failStatus.vue'
     import Inputletter from './inputletter.vue';
     import Letter from './letter.vue';
+    import EndGame from './endgame.vue'
     
     import GameContext from '../gameContext.js';
 
-    const updateFails = () => {
-        fails.value = Game.gameState.failStatus;
-    };
+    const updateFails = () => fails.value = Game.gameState.failStatus;
 
-    const updateCorrects = () => {
-        GameState.value = Game.gameState.corrects;
-    }
+    const updateCorrects = () => GameState.value = Game.gameState.corrects;
 
-    const toggleshowHint = () => {
-        showHint.value = !showHint.value;
-    }
+    const toggleshowHint = () => showHint.value = !showHint.value;
+
+    const endGame = () =>{ result.value = Game.gameState.result; console.log(result);}
     
     const props = defineProps({
         gameData:{
@@ -33,13 +30,14 @@
     const Game = new GameContext(props.gameData);
 
     const fails = ref(Game.gameState.failStatus);
-
     const correctLetters = ref(Game.gameState.corrects);
+    const showHint = ref(false);
+    const result = ref(Game.gameState.result);
 
     watch(() => Game.gameState.failStatus, updateFails);
     watch(() => Game.gameState.correct, updateCorrects);
+    watch(() => Game.gameState.result, endGame)
 
-    const showHint = ref(false);
 </script>
 
 <template>
@@ -69,6 +67,8 @@
             :checkLetter="Game.checkLetter"  
             />
         </section>
+
+        <EndGame v-if="result != null" :result="result"/>
     </section>
 </template>
 

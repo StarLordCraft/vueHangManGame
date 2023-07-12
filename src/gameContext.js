@@ -10,6 +10,7 @@ export default class GameContext{
     constructor(gameState){
         this.gameState = gameState;
         this.controllerWin = 0;
+        this.gameState.result = null;
         for(let i of this.gameState.palavra)if(i != ' ')++this.controllerWin;
         
         this.fails = 0;
@@ -50,7 +51,8 @@ export default class GameContext{
 
 
     checkEndGame = () => {
-        if(this.fails >= 6)this.gameState.result = false;
-        if(this.correct >= this.controllerWin)this.gameState.result = true;
+        if(this.fails >= 6)this.gameState.result = 'loss';
+        if(this.correct >= this.controllerWin)this.gameState.result = 'win';
+        console.log(this.gameState);
     }
 }
