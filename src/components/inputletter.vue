@@ -26,6 +26,7 @@
 
         text-transform: uppercase;
     }
+    
     button:hover{
         border: 2px solid var(--color-background-button);
     }
