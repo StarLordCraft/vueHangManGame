@@ -1,15 +1,17 @@
 <script setup>
     import {defineProps} from 'vue';
     const props = defineProps({
-        palavra:{
+        letter:{
             type: String,
             required: true,
-        }
+        },
+        
     });
+    const className = props.letter != ' ' ? 'letter' : '';
 </script>
 
 <template>
-    <div>
+    <div :class="className">
         {{  }}
     </div>
 </template>
@@ -18,7 +20,12 @@
     div{
         width: 4rem;
         height: 4rem;
-        
-        border-bottom: 2px solid var(--color-text-success);
+
+        font-size: 2rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .letter{
+        border-bottom: 2px solid var(--color-text-light);
     }
 </style>

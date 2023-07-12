@@ -32,8 +32,8 @@
                 <img :src="fails" alt="user fails">
             </div>
 
-            <div>
-                
+            <div class="word">
+                <Letter v-for="letter in props.gameData.palavra" :letter="letter" />
             </div>
 
         </section>
@@ -44,6 +44,16 @@
 </template>
 
 <style scoped>
+    .word{
+        width: 32rem;
+
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        margin-bottom: 1.5rem;
+    }
     .letters{
         width: 32rem;
 
