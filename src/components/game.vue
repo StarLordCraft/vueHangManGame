@@ -1,5 +1,5 @@
 <script setup>
-    import {ref, defineProps} from 'vue';
+    import {ref, defineProps, watch} from 'vue';
     
     import FailStatus from './failStatus.vue'
     import Inputletter from './inputletter.vue';
@@ -21,7 +21,19 @@
     const Game = new GameContext(props.gameData);
 
     const fails = ref(Game.gameState.failStatus);
+
     const GameState = ref(Game.gameState.corrects);
+
+    const updateFails = () => {
+        fails.value = Game.gameState.failStatus;
+    };
+
+    const updateCorrects = () => {
+        GameState.value = Game.gameState.corrects;
+    }
+
+    watch(() => Game.gameState.failStatus, updateFails);
+    watch(() => Game.gameState.correct, updateCorrects);
 </script>
 
 <template>
