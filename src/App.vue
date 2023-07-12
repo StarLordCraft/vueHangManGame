@@ -1,6 +1,7 @@
 <script setup>
   import {reactive} from 'vue';
-  import PreJogo from './components/preJogo.vue'
+  import PreJogo from './components/preJogo.vue';
+  import Game from './components/game.vue';
   const state = reactive({tela: 'inicio'});
 </script>
 
@@ -11,7 +12,7 @@
       <PreJogo :state="state" />
     </section>
     <section v-if="state.tela === 'game'" id="game">
-      
+      <Game />
     </section>
   </main>
 </template>
