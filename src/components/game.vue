@@ -3,9 +3,21 @@
     
     import FailStatus from './failStatus.vue'
     import Inputletter from './inputletter.vue';
-    import Letter from './letter.vue'
+    import Letter from './letter.vue';
     
     import GameContext from '../gameContext.js';
+
+    const updateFails = () => {
+        fails.value = Game.gameState.failStatus;
+    };
+
+    const updateCorrects = () => {
+        GameState.value = Game.gameState.corrects;
+    }
+
+    const toggleshowHint = () => {
+        showHint.value = !showHint.value;
+    }
     
     const props = defineProps({
         gameData:{
@@ -22,31 +34,33 @@
 
     const fails = ref(Game.gameState.failStatus);
 
-    const GameState = ref(Game.gameState.corrects);
-
-    const updateFails = () => {
-        fails.value = Game.gameState.failStatus;
-    };
-
-    const updateCorrects = () => {
-        GameState.value = Game.gameState.corrects;
-    }
+    const correctLetters = ref(Game.gameState.corrects);
 
     watch(() => Game.gameState.failStatus, updateFails);
     watch(() => Game.gameState.correct, updateCorrects);
+
+    const showHint = ref(false);
 </script>
 
 <template>
     <section>
-        <section>
+        <section class="info">
             <FailStatus :fails="fails" />
 
             <div class="word">
                 <Letter v-for="letter in props.gameData.palavra"
                 :letter="letter" 
-                :correct="GameState.indexOf(letter) != -1" 
+                :correct="correctLetters.indexOf(letter) != -1" 
                 />
             </div>
+
+            <p v-if="showHint">
+                Dica: {{ props.gameData.dica }}
+            </p>
+
+            <button @click="toggleshowHint">
+                Mostrar Dica
+            </button>
 
         </section>
         <section class="letters">
@@ -59,6 +73,11 @@
 </template>
 
 <style scoped>
+    .info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
     .word{
         width: 32rem;
 
@@ -75,5 +94,14 @@
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
+    }
+
+    p,
+    button{
+        margin-bottom: 1rem;
+    }
+
+    p{
+        color: var(--color-text-title);
     }
 </style>

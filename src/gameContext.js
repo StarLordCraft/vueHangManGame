@@ -9,17 +9,17 @@ import fails6 from './assets/fails6.svg';
 export default class GameContext{
     constructor(gameState){
         this.gameState = gameState;
+        this.controllerWin = 0;
+        for(let i of this.gameState.palavra)if(i != ' ')++this.controllerWin;
+        
+        this.fails = 0;
+        this.correct = 0;
 
         this.gameState.corrects = [];
 
-        this.fails = 0;
-        this.correct = 0;
         
         this.gameState.displayFails = [fails0, fails1, fails2, fails3, fails4, fails5, fails6];
         this.gameState.failStatus = this.gameState.displayFails[this.fails];
-
-        this.controllerWin = 0;
-        for(let i of this.gameState.palavra)if(i != ' ')++this.controllerWin;
     }
     checkLetter = (letter) => {
         let corrects = 0;
@@ -34,6 +34,8 @@ export default class GameContext{
             this.displayFailStatus();
         }
 
+        this.checkEndGame();
+
         return (corrects > 0);
     }
 
@@ -47,8 +49,8 @@ export default class GameContext{
     }
 
 
-    checkEndGame = (gameState) => {
-        if(this.fails >= 6)gameState.result = false;
-        if(this.correct >= this.controllerWin)gameState.result = true;
+    checkEndGame = () => {
+        if(this.fails >= 6)this.gameState.result = false;
+        if(this.correct >= this.controllerWin)this.gameState.result = true;
     }
 }
