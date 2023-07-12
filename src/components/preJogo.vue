@@ -11,6 +11,15 @@
     })    
 
     function nextFormInput(evt){
+        const input = evt.target.previousElementSibling;
+
+        console.log(input.validity)
+
+        if(input.validity.valueMissing){    
+
+            return;
+        }
+
         if(currentForm.value == 'palavra'){
             currentForm.value = 'dica'
             palavra.value = evt.target.previousElementSibling.value
@@ -33,8 +42,8 @@
         <label :for="currentForm">
             Digite a {{currentForm}}:
         </label>
-        <input type="text" :id="currentForm" :name="currentForm">
-        <button @click.prevent = "nextFormInput">
+        <input type="text" :id="currentForm" :name="currentForm" minlength="1" required>
+        <button type="submit" @click.prevent = "nextFormInput">
             Próximo
         </button>
     </form>

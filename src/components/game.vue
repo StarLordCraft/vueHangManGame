@@ -36,7 +36,7 @@
 
     watch(() => Game.gameState.failStatus, updateFails);
     watch(() => Game.gameState.correct, updateCorrects);
-    watch(() => Game.gameState.result, endGame)
+    watch(() => Game.gameState.result, endGame);
 
 </script>
 
