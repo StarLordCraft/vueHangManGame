@@ -1,5 +1,5 @@
 <script setup>
-    import {defineProps} from 'vue';
+    import {defineProps, ref} from 'vue';
     const props = defineProps({
         letter:{
             type: String,
@@ -12,13 +12,19 @@
         },
     })
 
+    const className = ref('');
+
     function handleLetterClick(){
-        checkLetter(props.letter);
+        if(props.checkLetter(props.letter)){
+            className.value = 'correct';
+            return;
+        }
+        className.value = 'fail';
     }
 </script>
 
 <template>
-    <button @click="handleLetterClick">
+    <button @click="handleLetterClick" :class="className">
         {{ props.letter }}
     </button>
 </template>
@@ -34,6 +40,17 @@
         height: 4rem;
 
         text-transform: uppercase;
+    }
+
+    .correct{
+        border: 2px solid var(--color-text-success);
+
+        color: var(--color-text-success);
+    }
+
+    .fail{
+        border: 2px solid var(--color-text-error);
+        color: var(--color-text-error)
     }
     
     button:hover{
