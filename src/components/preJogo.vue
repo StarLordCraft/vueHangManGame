@@ -29,6 +29,7 @@
 
 <template>
     <form class="form">
+        <h1 id="title">Hangman Game</h1>
         <label :for="currentForm">
             Digite a {{currentForm}}:
         </label>
@@ -40,6 +41,9 @@
 </template>
 
 <style scoped>
+    #title{
+    color: var(--color-text-title);
+    }
     .form{
         display: flex;
         flex-direction: column;

@@ -7,7 +7,6 @@
 
 <template>
   <main id="app">
-    <h1 id="title">Hangman Game</h1>
     <section v-if="state.tela === 'inicio'" id="inicio">
       <PreJogo :state="state" />
     </section>
@@ -18,10 +17,6 @@
 </template>
 
 <style scoped>
-  #title{
-    color: var(--color-text-title);
-  }
-
   #app{
     width: 100%;
     height: 100vh;
