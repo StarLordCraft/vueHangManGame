@@ -5,14 +5,18 @@
             type: String,
             required: true,
         },
-        
+        correct:{
+            type: Boolean,
+            required: true,
+        }
+
     });
     const className = props.letter != ' ' ? 'letter' : '';
 </script>
 
 <template>
     <div :class="className">
-        {{  }}
+        {{ props.correct ? props.letter : '' }}
     </div>
 </template>
 
