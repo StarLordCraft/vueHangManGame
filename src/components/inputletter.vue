@@ -14,8 +14,7 @@
 
     const className = ref('');
 
-    function handleLetterClick(evt){
-        evt.target.setAttribute('disabled', true);
+    function handleLetterClick(){
         if(props.checkLetter(props.letter)){
             className.value = 'correct';
             return;
