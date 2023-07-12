@@ -12,8 +12,6 @@
     });
     const className = props.letter != ' ' ? 'letter' : '';
 
-    console.log(props.letter)
-
 </script>
 
 <template>

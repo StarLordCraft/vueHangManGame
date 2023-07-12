@@ -19,6 +19,7 @@
             className.value = 'correct';
             return;
         }
+        
         className.value = 'fail';
     }
 </script>

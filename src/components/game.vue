@@ -1,14 +1,7 @@
 <script setup>
-    import {ref, reactive, defineProps} from 'vue';
+    import {ref, defineProps} from 'vue';
     
-    import fails0 from '../assets/fails0.svg'
-    import fails1 from '../assets/fails1.svg'
-    import fails2 from '../assets/fails2.svg'
-    import fails3 from '../assets/fails3.svg'
-    import fails4 from '../assets/fails4.svg'
-    import fails5 from '../assets/fails5.svg'
-    import fails6 from '../assets/fails6.svg'
-    
+    import FailStatus from './failStatus.vue'
     import Inputletter from './inputletter.vue';
     import Letter from './letter.vue'
     
@@ -26,26 +19,29 @@
     "t", "u", "v", "w", "x", "y", "z"];
     
     const Game = new GameContext(props.gameData);
-    
-    const fails = ref(fails0);
-    const GameState = ref(Game.gameState.corrects);
 
+    const fails = ref(Game.gameState.failStatus);
+    const GameState = ref(Game.gameState.corrects);
 </script>
 
 <template>
     <section>
         <section>
-            <div>
-                <img :src="fails" alt="user fails">
-            </div>
+            <FailStatus :fails="fails" />
 
             <div class="word">
-                <Letter v-for="letter in props.gameData.palavra" :letter="letter" :correct="GameState.indexOf(letter) != -1" />
+                <Letter v-for="letter in props.gameData.palavra"
+                :letter="letter" 
+                :correct="GameState.indexOf(letter) != -1" 
+                />
             </div>
 
         </section>
         <section class="letters">
-            <Inputletter v-for="letter in alphabet" :letter="letter" :checkLetter="Game.checkLetter" />
+            <Inputletter v-for="letter in alphabet" 
+            :letter="letter"  
+            :checkLetter="Game.checkLetter"  
+            />
         </section>
     </section>
 </template>
