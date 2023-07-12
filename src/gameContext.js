@@ -1,4 +1,4 @@
-class gameContext{
+export default class GameContext{
     constructor(gameState){
         this.gameState = gameState;
 
@@ -9,8 +9,10 @@ class gameContext{
         for(i in this.gameState.palavra)i != ' ' ? ++this.controllerWin : '';
     }
     checkLetter = (letter) => {
-        for(i in this.gameState.palavra){
+        let corrects = 0;
+        for(i in this.gameState.palavra)i === letter ? ++corrects : '';
 
-        }
+        corrects === 0 ? ++this.fails : this.correct += corrects;
+        //Se acertar alguma letra ele mexe na controler, senão ai ele simplesmente soma um nos erros
     }
 }
