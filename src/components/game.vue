@@ -11,12 +11,18 @@
         <section>
 
         </section>
-        <section>
+        <section class="letters">
             <Letter v-for="letter in alphabet" :letter="letter" />
         </section>
     </section>
 </template>
 
 <style>
+    .letters{
+        width: 32rem;
 
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
 </style>

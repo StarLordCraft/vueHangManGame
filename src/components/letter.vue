@@ -15,5 +15,13 @@
 </template>
 
 <style scoped>
+    button{
+        background-color: transparent;
+        
+        border: 2px solid var(--color-background-button);; 
+        border-radius: 0;
 
+        width: 4rem;
+        height: 4rem;
+    }
 </style>
