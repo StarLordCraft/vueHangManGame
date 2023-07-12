@@ -1,10 +1,16 @@
-<script>
+<script setup>
     import {defineProps} from 'vue';
+    const props = defineProps({
+        letter:{
+            type: String,
+            required: true,
+        }
+    })
 </script>
 
 <template>
     <button @click="">
-        {{ letter }}
+        {{ props.letter }}
     </button>
 </template>
 

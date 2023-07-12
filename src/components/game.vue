@@ -1,4 +1,4 @@
-<script>
+<script setup>
     import Letter from './letter.vue';
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", 
     "l", "m", "n", "o", "p", "q", "r", "s",
@@ -7,14 +7,14 @@
 </script>
 
 <template>
-    <main>
+    <section>
         <section>
 
         </section>
         <section>
-            <Letter v-for="letter in alphabet" />
+            <Letter v-for="letter in alphabet" :letter="letter" />
         </section>
-    </main>
+    </section>
 </template>
 
 <style>
