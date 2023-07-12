@@ -15,4 +15,8 @@ export default class GameContext{
         corrects === 0 ? ++this.fails : this.correct += corrects;
         //Se acertar alguma letra ele mexe na controler, senão ai ele simplesmente soma um nos erros
     }
+    checkEndGame = (gameState) => {
+        this.fails >= 6 ? gameState.result = false : '';
+        this.correct >= this.controllerWin ? gameState.result = true : '';
+    }
 }

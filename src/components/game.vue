@@ -8,6 +8,14 @@
     import fails4 from '../assets/fails4.svg'
     import fails5 from '../assets/fails5.svg'
     import fails6 from '../assets/fails6.svg'
+    
+    import Inputletter from './inputletter.vue';
+    import Letter from './letter.vue'
+    
+    import GameState from '../gameContext.js';
+    
+    const fails = ref(fails0);
+
 
     const props = defineProps({
         gameData:{
@@ -16,13 +24,12 @@
         }
     })
 
-    import Inputletter from './inputletter.vue';
-    import Letter from './letter.vue'
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", 
     "l", "m", "n", "o", "p", "q", "r", "s",
     "t", "u", "v", "w", "x", "y", "z"];
     
-    const fails = ref(fails0);
+
+    const Game = new GameState(props.gameData);
 </script>
 
 <template>
@@ -38,7 +45,13 @@
 
         </section>
         <section class="letters">
-            <Inputletter v-for="letter in alphabet" :letter="letter" />
+            <Inputletter v-for="letter in alphabet" :letter="letter" :letterState="false" />
+        </section>
+        <section>
+            <div>
+                <GameWon v-if="Game.gameState.result" />
+                <GameLoss v-else />
+            </div>
         </section>
     </section>
 </template>

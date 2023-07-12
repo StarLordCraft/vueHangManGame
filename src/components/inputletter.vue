@@ -4,12 +4,21 @@
         letter:{
             type: String,
             required: true,
-        }
+        },
+
+        letterState:{
+            type: Boolean,
+            required: true,
+        },
     })
+
+    function handleLetterClick(){
+        console.log('NÃO SEI OQ FZR!!!!!!! DESGRAÇA')
+    }
 </script>
 
 <template>
-    <button @click="">
+    <button @click="handleLetterClick">
         {{ props.letter }}
     </button>
 </template>
