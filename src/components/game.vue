@@ -1,5 +1,5 @@
 <script setup>
-    import {ref, defineProps} from 'vue';
+    import {ref, reactive, defineProps} from 'vue';
     
     import fails0 from '../assets/fails0.svg'
     import fails1 from '../assets/fails1.svg'
@@ -12,24 +12,24 @@
     import Inputletter from './inputletter.vue';
     import Letter from './letter.vue'
     
-    import GameState from '../gameContext.js';
+    import GameContext from '../gameContext.js';
     
-    const fails = ref(fails0);
-
-
+    
     const props = defineProps({
         gameData:{
             type: Object,
             required: true,
         }
     })
-
+    
     const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", 
     "l", "m", "n", "o", "p", "q", "r", "s",
     "t", "u", "v", "w", "x", "y", "z"];
     
-
-    const Game = new GameState(props.gameData);
+    const Game = new GameContext(props.gameData);
+    
+    const fails = ref(fails0);
+    const GameState = reactive(Game.gameState);
 </script>
 
 <template>
@@ -40,18 +40,12 @@
             </div>
 
             <div class="word">
-                <Letter v-for="letter in props.gameData.palavra" :letter="letter" />
+                <Letter v-for="letter in props.gameData.palavra" :letter="letter" :correct="false" />
             </div>
 
         </section>
         <section class="letters">
-            <Inputletter v-for="letter in alphabet" :letter="letter" :letterState="false" />
-        </section>
-        <section>
-            <div>
-                <GameWon v-if="Game.gameState.result" />
-                <GameLoss v-else />
-            </div>
+            <Inputletter v-for="letter in alphabet" :letter="letter" :checkLetter="Game.checkLetter" />
         </section>
     </section>
 </template>

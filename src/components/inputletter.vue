@@ -6,14 +6,14 @@
             required: true,
         },
 
-        letterState:{
-            type: Boolean,
+        checkLetter:{
+            type: Function,
             required: true,
         },
     })
 
     function handleLetterClick(){
-        console.log('NÃO SEI OQ FZR!!!!!!! DESGRAÇA')
+        checkLetter(props.letter);
     }
 </script>
 
